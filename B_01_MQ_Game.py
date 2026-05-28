@@ -86,19 +86,19 @@ def choose_question():
             "\nChoose: "
         ).lower()
 
-        # Addition
+        # Addition option
         if choice in ["addition", "a"]:
             return "+"
 
-        # Subtraction
+        # Subtraction option
         elif choice in ["subtraction", "s"]:
             return "-"
 
-        # Multiplication
+        # Multiplication option
         elif choice in ["multiplication", "m"]:
             return "×"
 
-        # Division
+        # Division option
         elif choice in ["division", "d"]:
             return "÷"
 
@@ -141,7 +141,7 @@ def ask_question(function):
     # Ask question
     user_input = input(f"What is {a} {function} {b}? ")
 
-    # Exit code
+    # Exit code if user wats to leave the game they need to type 'xxx' code
     if user_input.lower() == "xxx":
         return "exit", 0, "Exited game"
 
@@ -182,7 +182,7 @@ want_instructions = yes_no(
 if want_instructions == "yes":
     instructions()
 
-# Choose maths type
+# Choose type of math questions
 operation = choose_question()
 
 # Ask rounds
@@ -198,7 +198,7 @@ score = 0
 
 game_history = []
 
-# Exit if needed
+# Exit if they want to leave the game
 if num_rounds == "exit":
 
     print("\nGame exited.")
@@ -214,7 +214,7 @@ else:
     # Game loop
     while rounds_played < num_rounds:
 
-        # Heading
+        # Heading for infinite rounds if infinite mode is chosen
         if mode == "infinite":
 
             heading = (
@@ -242,21 +242,21 @@ else:
         score += points
         rounds_played += 1
 
-        # Save history
+        # Saved history
         history_item = (
             f"Round {rounds_played}: {feedback}"
         )
 
         game_history.append(history_item)
 
-        # Infinite mode increases rounds
+        # Infinite mode increase the rounds
         if mode == "infinite":
             num_rounds += 1
 
     # End game
     print("\n🏁 Game Over 🏁")
 
-    # Statistics
+    # Statistics would show if user plays at least 1 rounds or more
     if rounds_played > 0:
 
         percentage = (score / rounds_played) * 100
@@ -272,11 +272,11 @@ else:
 
         if see_history == "yes":
 
-            print("\n📜 Game History 📜")
+            print("\n📜 Quiz History 📜")
 
             for item in game_history:
                 print(item)
-
+    # if user uses xxx code and exits it would show they didn't play any rounds
     else:
 
         print(
